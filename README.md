@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# Tablero Tamaiti
+Dashboard de administración, que permite al administrador visualizar contenidos y usuarios registrados en su ecommerce.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Online:
+https://tamaiti-tablero.herokuapp.com/
+
 
 ## Available Scripts
 
