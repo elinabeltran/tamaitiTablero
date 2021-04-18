@@ -7,15 +7,31 @@ function CategoryList(props) {
 
     let [loading, setLoading] = useState(true);
     let [categories, setCategories] = useState([]);
-
+  
 
     useEffect((props) => {
         fetch('https://tamaiti.herokuapp.com/api/products/categories')
             .then(response => response.json())
-            .then(data => {
+            .then(responseCategories => {
                 setLoading(false);
-                setCategories(data.data)
+                let arrayCategories=[]
+                for (let i = 0; i < responseCategories.data.length; i++) {
+                    fetch('https://tamaiti.herokuapp.com/api/products/categories/'+responseCategories.data[i].id)
+                    .then(response => response.json())
+                    .then(data => {
+                        arrayCategories.push(
+                            {   name: data.meta.category_name,
+                                total:data.meta.total
+                            })
+                    })     
+                }
+                setCategories(arrayCategories)
             })
+
+
+
+
+
     }, [loading])
 
     return (
@@ -31,10 +47,10 @@ function CategoryList(props) {
 
                         {!loading && categories.map((category, i) => {
                             return (
-                                <Category key={`category${i}`}  title={category.name}/>
+                                <Category key={`category${i}`} title={category.name} amount={category.total}/>
                             )
                         })
-                       }
+                        }
 
                     </div>
                 </div>
