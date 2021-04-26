@@ -42,7 +42,7 @@ function Tabla(props) {
                 </tr>
             </thead>
             <tbody>
-                {loading && <img src="/loading.gif" alt="loading" />}
+            {loading && <tr><th><img src="/loading.gif" alt="loading" /></th></tr>}
 
                 { !loading && products.map((product, i) => {
                         return (
@@ -64,11 +64,13 @@ function Tabla(props) {
                     <th scope="col">Email</th>
                 </tr>
             </thead>
+
             <tbody>
-                {loading && <img src="/loading.gif" alt="loading" />}
+            {loading && <tr><th><img src="/loading.gif" alt="loading" /></th></tr>}
+
                 { !loading && users.map((user, i) => {
                         return (
-                            <TablaContent key={`product${i}`} item1={user.id} item2={user.name} item3={user.last_name} item4={user.email}/>
+                            <TablaContent key={`user${i}`} item1={user.id} item2={user.name} item3={user.last_name} item4={user.email}/>
                         )
                     })
                 }
